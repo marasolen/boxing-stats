@@ -1949,5 +1949,12 @@
         "instructor": "Jeff",
         "calories": 597,
         "avghr": 150
+    },
+    {
+        "date": "2025-03-18",
+        "time": "19:30",
+        "instructor": "Aimee",
+        "calories": 571,
+        "avghr": 150
     }
 ]
