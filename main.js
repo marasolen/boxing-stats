@@ -527,7 +527,7 @@ const setupInstructorVisualization = () => {
     const containerHeight = document.getElementById("instructor-visualization").clientHeight;
 
     const margin = {
-        top: 0.04 * containerHeight,
+        top: 0.08 * containerHeight,
         right: 0.04 * containerWidth,
         bottom: 0.1 * containerHeight,
         left: 0.08 * containerWidth
@@ -586,9 +586,9 @@ const setupInstructorVisualization = () => {
         .tickPadding(10);
 
     let simulation = d3.forceSimulation(fitnessData)
-        .force("x", d3.forceX(d => xScale(d.instructor) + xScale.bandwidth() / 2).strength(2))
-        .force("y", d3.forceY(d => yScale(d.calories)))
-        .force("collide", d3.forceCollide(0.012 * width))
+        .force("x", d3.forceX(d => xScale(d.instructor) + xScale.bandwidth() / 2))
+        .force("y", d3.forceY(d => yScale(d.calories)).strength(2))
+        .force("collide", d3.forceCollide(0.01 * width))
         .stop();
 
     for (let i = 0; i < fitnessData.length; ++i) {
@@ -603,7 +603,7 @@ const setupInstructorVisualization = () => {
         .attr("cx", d => d.x)
         .attr("cy", d => d.y)
         .attr("fill-opacity", 0.7)
-        .attr("r", width * 0.012);
+        .attr("r", width * 0.01);
     setTooltip(points, 
         d => `<b>${dayjs(d.date).format("MMMM D, YYYY")} at ${d.time}</b><br>
             <i>Instructor: ${d.realInstructor.split(" ").join(" & ")}</i><br>
